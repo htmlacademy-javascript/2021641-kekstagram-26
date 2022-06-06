@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
-* Студент: [Александр Савилов](https://up.htmlacademy.ru/javascript/26/user/2021641).
-* Наставник: `Неизвестно`.
+- Студент: [Александр Савилов](https://up.htmlacademy.ru/javascript/26/user/2021641).
+- Наставник: [Павел Ившин](https://htmlacademy.ru/profile/id818775).
 
 ---
 
