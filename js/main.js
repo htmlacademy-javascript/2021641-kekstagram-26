@@ -1,30 +1,23 @@
 const randomInteger = function (min, max) {
   Math.floor(Math.random() * max);
+  const number = 0;
 
   if (min < 0 || max < 0) {
-    console.log('Числа должны быть больше нуля!');
+    return -1;
   }
 
   if (min >= max) {
-    console.log('Исправьте максимальное значение!');
+    return -1;
   }
 
-  return randomInteger;
+  return number;
 };
 
 randomInteger();
 
-const maxStringLength = function (testString, maxLength) {
-  if (testString <= maxLength) {
-    testString = true;
-  }
-
-  if (testString > maxLength) {
-    maxLength = false;
-  }
-
-  return testString;
+const isNormalString = function (testString, maxLength) {
+  return testString.length > maxLength;
 };
 
-maxStringLength();
+isNormalString();
 
