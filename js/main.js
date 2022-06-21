@@ -40,15 +40,35 @@ const NAMES = [
 ];
 function createComment () {
   const comment = () => ({
-    id: getRandomPositiveInteger(50, 200),
+    id: getRandomPositiveInteger(30, 180),
     avatar: `img/avatar- ${  [getRandomPositiveInteger(1, 6)]  } .svg`,
     message: MESSAGES[getRandomPositiveInteger(0, 2)],
     name: NAMES[getRandomPositiveInteger(0, 10)],
   });
 
   return Array.from({length: COUNT}, comment);
-};
+}
 function createPhoto (id) {
+  const comments = [];
+  const commentsCount = getRandomPositiveInteger(30, 180);
+  const ids = [];
+  for (let i = 1; i <= commentsCount; i++) {
+    if (i === 1) {
+      const r = getRandomPositiveInteger(30, 180);
+      comments.push(createComment(r));
+      ids.push(r);
+    } else {
+      let r;
+      while(true) {
+        r = getRandomPositiveInteger(30, 180);
+        if (!ids.some(el => el === r)) {
+          ids.push(r);
+          break;
+        }
+      }
+      comments.push(createComment(r));
+    }
+  }
   return {
     id,
     url: `photos/ ${  id  } .jpg`,
@@ -56,7 +76,7 @@ function createPhoto (id) {
     discription: DISCRIPTIONS[getRandomPositiveInteger(1, DISCRIPTIONS.length - 1)],
     comments: createComment(),
   };
-};
+}
 function  createPhotos (count) {
   const photos = [];
   for (let i = 1; i <= count; i++) {
