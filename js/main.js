@@ -26,7 +26,7 @@ const MESSAGES = [
   'Всё отлично!',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!'
 ];
-const NAMES = [
+const USER_NAMES = [
   'Алекс',
   'Василий',
   'Антон',
@@ -38,53 +38,40 @@ const NAMES = [
   'Анастасия',
   'Потап',
 ];
-function createComment () {
-  const comment = () => ({
-    id: getRandomPositiveInteger(30, 180),
-    avatar: `img/avatar- ${  [getRandomPositiveInteger(1, 6)]  } .svg`,
-    message: MESSAGES[getRandomPositiveInteger(0, 2)],
-    name: NAMES[getRandomPositiveInteger(0, 10)],
-  });
 
-  return Array.from({length: COUNT}, comment);
+function creatRandomItem (arr) {
+  return arr([getRandomPositiveInteger(0, arr.length - 1)]);
 }
-function createPhoto (id) {
-  const comments = [];
-  const commentsCount = getRandomPositiveInteger(30, 180);
-  const ids = [];
-  for (let i = 1; i <= commentsCount; i++) {
-    if (i === 1) {
-      const r = getRandomPositiveInteger(30, 180);
-      comments.push(createComment(r));
-      ids.push(r);
-    } else {
-      let r;
-      while(true) {
-        r = getRandomPositiveInteger(30, 180);
-        if (!ids.some(el => el === r)) {
-          ids.push(r);
-          break;
-        }
-      }
-      comments.push(createComment(r));
-    }
-  }
-  return {
-    id,
-    url: `photos/ ${  id  } .jpg`,
-    likes: getRandomPositiveInteger(1, MESSAGES.length),
-    discription: DISCRIPTIONS[getRandomPositiveInteger(1, DISCRIPTIONS.length - 1)],
-    comments: createComment(),
-  };
-}
-function  createPhotos (count) {
-  const photos = [];
-  for (let i = 1; i <= count; i++) {
-    photos.push(createPhoto(i));
+
+function createComments (commentsId) {
+  const comment = [];
+
+  for (let i = 1; i <= commentsId; i++) {
+    comment.push({
+      id: i,
+      avatar: `img/avatar- ${  [getRandomPositiveInteger(1, 6)]  } .svg`,
+      message: creatRandomItem(MESSAGES),
+      name: creatRandomItem(USER_NAMES),
+    });
   }
 
-  return photos;
+  return comment;
 }
-const photos = createPhotos(25);
-const creatUserComments = Array.from({length: COUNT}, createPhoto);
+
+function createPost (postId) {
+  const post = [];
+
+  for (let i = 1; i <= postId; i++) {
+    post.push({
+      id: i,
+      url: `photos/ ${ i } .jpg`,
+      discription: creatRandomItem(DISCRIPTIONS),
+      likes: getRandomPositiveInteger(15, 200),
+      comments: createComments(getRandomPositiveInteger(2, 10)),
+    });
+  }
+
+  return post;
+}
+
 
