@@ -26,7 +26,7 @@ const USER_NAMES = [
   'Потап',
 ];
 
-function createComments (commentsId) {
+const createComments = (commentsId) => {
   const comment = [];
 
   for (let i = 1; i <= commentsId; i++) {
@@ -39,9 +39,9 @@ function createComments (commentsId) {
   }
 
   return comment;
-}
+};
 
-function createPost (postId) {
+const createPost = (postId) => {
   const post = [];
 
   for (let i = 1; i <= postId; i++) {
@@ -55,6 +55,6 @@ function createPost (postId) {
   }
 
   return post;
-}
+};
 
 export {createPost, COUNT};
