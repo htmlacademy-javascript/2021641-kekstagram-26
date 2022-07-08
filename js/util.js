@@ -5,12 +5,9 @@ function getRandomPositiveInteger (a, b) {
   return Math.floor(result);
 }
 
-function checkStringLength (string, maxLength) {
-  return string.length <= maxLength;
-}
+// eslint-disable-next-line no-unused-vars
+const checkStringLength = (string, maxLength) => string.length <= maxLength;
 
-function creatRandomItem (arr) {
-  return arr[getRandomPositiveInteger(0, arr.length - 1)];
-}
+const creatRandomItem = (arr) => arr[getRandomPositiveInteger(0, arr.length - 1)];
 
 export {getRandomPositiveInteger, creatRandomItem};
