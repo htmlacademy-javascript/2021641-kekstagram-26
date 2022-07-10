@@ -9,10 +9,20 @@ const renderPosts = (posts) => {
     pictureCollection.querySelector('.picture__img').src = post.url;
     pictureCollection.querySelector('picture__comments').textContent = post.comments.length;
     pictureCollection.querySelector('picture__likes').textContent = post.likes;
+    pictureCollection.dataset.postId = post.id;
     pictureCollection.append(picturesFragment);
   });
 
   pictureContainer.append(picturesFragment);
 };
 
-export { renderPosts };
+const bindPostClickListener = (callback) => {
+  pictureContainer.addEventListener('click', (evt) => {
+    const similarPicture = evt.target.closest('.picture');
+    if (similarPicture) {
+      callback(similarPicture.dataset.postId);
+    }
+  });
+};
+
+export {renderPosts, bindPostClickListener};

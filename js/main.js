@@ -1,6 +1,12 @@
 import {createPost, COUNT} from './mock.js';
-import {renderPosts} from './render-posts';
+import {renderPosts, bindPostClickListener} from './render-posts';
+import {openBigPicture} from './full-screen';
 
-createPost(COUNT);
-renderPosts();
+const posts = createPost(COUNT);
+renderPosts(posts);
+
+bindPostClickListener((postId) => {
+  const selectedPost = posts.find((post) => post.id === +postId);
+  openBigPicture(selectedPost);
+});
 
