@@ -10,4 +10,6 @@ const checkStringLength = (string, maxLength) => string.length <= maxLength;
 
 const creatRandomItem = (arr) => arr[getRandomPositiveInteger(0, arr.length - 1)];
 
-export {getRandomPositiveInteger, creatRandomItem};
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+export {getRandomPositiveInteger, creatRandomItem, isEscapeKey};
